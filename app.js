@@ -5,17 +5,17 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var indexRouter = require("../routes/index");
+var usersRouter = require("../routes/users.js");
 const compression = require("compression");
 const helmet = require("helmet");
-const catalogRouter = require("./routes/catalog"); // Імпортуйте маршрути для розділу сайту "catalog"
+const catalogRouter = require("../routes/catalog.js"); // Імпортуйте маршрути для розділу сайту "catalog"
 const compression = require("compression");
 
 // Створіть об'єкт застосунку Express
 
-const catalogRouter = require("./routes/catalog"); 
-const connectDB = require('./db.js');
+const catalogRouter = require("../routes/catalog.js"); 
+const connectDB = require('../db.js');
 connectDB(); 
 
 const app = express();
