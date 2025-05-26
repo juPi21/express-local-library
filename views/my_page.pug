@@ -1,0 +1,18 @@
+//-*Багатострочний коментар:
+//-*Цей шаблон розширює базовий layout.pug
+//-*Він виводить заголовок та список елементів з масиву items
+extends layout
+
+block content
+  //- Однострічковий коментар: Виводимо заголовок
+  h1(style="color: blue; text-decoration: underline")= title
+
+  p This page is displayed using Pug.
+
+  ul(style="list-style-type: square; color: green")
+    each item in items
+      li= item
+
+
+
+

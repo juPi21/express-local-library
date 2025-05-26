@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST' action='')
+    .form-group
+      label(for='book') Книга
+      select#book.form-control(name='book' required)
+        each book in book_list
+          if bookinstance && bookinstance.book && book._id.toString() === bookinstance.book.toString()
+            option(value=book._id selected)= book.title
+          else
+            option(value=book._id)= book.title
+
+    .form-group
+      label(for='imprint') Видавництво
+      input#imprint.form-control(type='text', name='imprint', required, value=bookinstance ? bookinstance.imprint : '')
+
+    .form-group
+      label(for='status') Статус
+      select#status.form-control(name='status' required)
+        each val in ['Maintenance', 'Available', 'Loaned', 'Reserved']
+          if bookinstance && bookinstance.status === val
+            option(value=val selected)= val
+          else
+            option(value=val)= val
+
+    .form-group
+      label(for='due_back') Дата повернення
+      input#due_back.form-control(type='date', name='due_back', value=bookinstance && bookinstance.due_back ? bookinstance.due_back.toISOString().split('T')[0] : '')
+
+    button.btn.btn-primary(type='submit') Зберегти
