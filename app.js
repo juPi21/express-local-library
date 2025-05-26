@@ -5,17 +5,17 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require("./express-locallibrary/routes/index");
-var usersRouter = require("./express-locallibrary/routes/users.js");
+var indexRouter = require("./routes/index");
+var usersRouter = require("./routes/users.js");
 const compression = require("compression");
 const helmet = require("helmet");
-const catalogRouter = require("./express-locallibrary/routes/catalog.js"); // Імпортуйте маршрути для розділу сайту "catalog"
+const catalogRouter = require("./routes/catalog.js"); // Імпортуйте маршрути для розділу сайту "catalog"
 const compression = require("compression");
 
-// Створіть об'єкт застосунку Express
+// Створіть об'єкт застосунку Express 
 
-const catalogRouter = require("./express-locallibrary/routes/catalog.js"); 
-const connectDB = require('./express-locallibrary/db.js');
+const catalogRouter = require("./routes/catalog.js"); 
+const connectDB = require('./db.js');
 connectDB(); 
 
 const app = express();
@@ -25,7 +25,7 @@ const limiter = RateLimit({
   windowMs: 1 * 60 * 1000, // 1 хвилина
   max: 20,
 });
-// Застосуйте обмеження швидкості до всіх запитів
+// Застосуйте обмеження швидкості до всіх запитів ds
 app.use(limiter);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
